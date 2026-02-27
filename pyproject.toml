@@ -1,0 +1,31 @@
+[project]
+name = "test-task"
+version = "0.1.0"
+description = "Test task for Vanger.rf"
+authors = [
+    { name = "Vik Vyaz", email = "nightronin@yandex.com" }
+]
+readme = "README.md"
+requires-python = "^3.12"
+dependencies = [
+    "django (==5.2)",
+    "pymysql (==1.1.2)",
+    "python-decouple (==3.8)",
+    "django-filer (>=3.4.4,<4.0.0)",
+    "django-admin-sortable2 (>=2.3.1,<3.0.0)",
+    "cryptography (>=46.0.5,<47.0.0)",
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "black (==26.1.0)",
+    "isort (==8.0.0)",
+    "pytest (==9.0.2)",
+    "flake8 (==7.3.0)",
+    "pytest-cov (==7.0.0)",
+    "ipython (==9.10.0)"
+]

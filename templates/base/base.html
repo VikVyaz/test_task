@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+    <link rel="shortcut icon" href="{% static 'image/favicon/favicon.ico' %}">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'image/favicon/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'image/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'image/favicon/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'image/favicon/favicon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'image/favicon/favicon-512x512.png' %}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/favicon/apple-touch-icon.png' %}">
+
+    <link rel="manifest" href="{%  static 'favicon/site.webmanifest' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom-nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom-block-1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom-block-2.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-custom fixed-top" aria-label="Главная навигация">
+    <div class="container-fluid">
+        {% block nav %}
+
+        {% endblock %}
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+
+{% block content-block-1 %}
+{% endblock %}
+
+{% block content-block-2 %}
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script type="text/javascript" src="{% static 'js/block-2.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block nav %}
+<div class="d-flex align-items-center gap-2 left-group">
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarMain"
+            aria-controls="navbarMain" aria-expanded="false"
+            aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand p-0 m-0" href="{% url 'web:main_page' %}">
+        <img src="{% static 'image/logos/nasa-logo-77x64.png' %}"
+             alt="Главная страница"
+             class="navbar-logo logo-desktop">
+        <img src="{% static 'image/logos/nasa-logo-57x48.png' %}"
+             alt="Главная страница"
+             class="navbar-logo logo-mobile">
+    </a>
+</div>
+
+{% if user.is_authenticated %}
+<div class="user-block order-md-3 d-none d-md-flex align-items-center gap-2">
+    <span class="text-white fw-medium">{{ user.username }}</span>
+    <form method="post" action="{% url 'users:logout' %}" class="m-0">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-login">Выйти</button>
+    </form>
+</div>
+
+<div class="user-block-mobile order-3 d-flex d-md-none align-items-center">
+    <span class="text-white me-2" style="font-size: 14px;">{{ user.username|truncatechars:8 }}</span>
+    <form method="post" action="{% url 'users:logout' %}" class="m-0">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-login-mobile">Выйти</button>
+    </form>
+</div>
+{% else %}
+<a class="btn btn-login order-md-3" href="{% url 'users:login' %}">вход</a>
+{% endif %}
+
+<div class="collapse navbar-collapse" id="navbarMain">
+    <ul class="navbar-nav mx-auto gap-4">
+        <li class="nav-item">
+            <a class="nav-link text-white px-3" href="#advantages">ПРЕИМУЩЕСТВА</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white px-3" href="#photos">ФОТОГРАФИИ</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content-block-1 %}
+
+<section id="advantages" class="advantages-section">
+    <div class="container-fluid p-0 h-100 d-flex flex-column">
+
+        <div class="row justify-content-center flex-grow-0">
+            <div class="col-12 col-lg-10 text-center">
+                <h1 class="display-2 fw-bold text-white mb-4">Космическое агентство</h1>
+                <p class="lead text-white-50 px-3">
+                    Национальное управление по аэронавтике и исследованию космического пространства - ведомство,
+                    относящееся к федеральному правительству США и подчиняющееся непосредственно президенту США.
+                </p>
+            </div>
+        </div>
+
+        <div class="bottom-row">
+
+            <div class="left-col">
+                <div class="large-image-wrapper">
+                    <img src="{% static 'image/block-1/earth.png' %}"
+                         alt="Космическое пространство"
+                         class="large-image">
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="grid-2x2">
+
+                    <div class="grid-item">
+                        <div class="icon-wrapper">
+                            <img src="{% static 'image/block-1/shuttle.png' %}"
+                                 alt="Шатл"
+                                 class="icon-image">
+                        </div>
+                        <p class="icon-text">Спейс шаттлы - пилотируемые корабли</p>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="icon-wrapper">
+                            <img src="{% static 'image/block-1/telescope.png' %}"
+                                 alt="Телескоп"
+                                 class="icon-image">
+                        </div>
+                        <p class="icon-text">Лучшее телескопическое оборудование</p>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="icon-wrapper">
+                            <img src="{% static 'image/block-1/moon.png' %}"
+                                 alt="Луна"
+                                 class="icon-image">
+                        </div>
+                        <p class="icon-text">Исследовательские станции на Луне - шаг к новым открытиям!</p>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="icon-wrapper">
+                            <img src="{% static 'image/block-1/medal.png' %}"
+                                 alt="Медаль"
+                                 class="icon-image">
+                        </div>
+                        <p class="icon-text">Золотая медаль по научным исследованиям</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content-block-2 %}
+{% load static %}
+
+<section id="photos" class="gallery-section">
+    <div class="gallery-outer-container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 text-center">
+                <h2 class="display-2 fw-bold text-white mb-4">Фотографии</h2>
+            </div>
+        </div>
+
+        <div class="slider-for-container">
+            <div class="slider-for">
+                {% for slide in slides %}
+                {% if slide.pic %}
+                <div class="slider-for-item">
+                    <img src="{{ slide.pic.url }}"
+                         alt=""
+                         class="main-slide-image"
+                         data-fancybox="gallery"
+                         data-caption="">
+                </div>
+                {% endif %}
+                {% empty %}
+                <div class="no-slides-message">
+                    <p class="text-white-50 mb-0">Нет изображений</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="slider-nav-container">
+            <div class="slider-nav">
+                {% for slide in slides %}
+                {% if slide.pic %}
+                <div class="slider-nav-item">
+                    <div class="thumbnail-wrapper">
+                        <img src="{{ slide.pic.url }}"
+                             alt=""
+                             class="thumbnail-img">
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

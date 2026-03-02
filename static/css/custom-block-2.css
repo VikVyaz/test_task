@@ -1,0 +1,161 @@
+.gallery-section {
+    background-color: #1F242C;
+    width: 100%;
+    padding: 90px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-outer-container {
+    width: 78%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.gallery-outer-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+}
+
+.slider-for-container {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.slider-for {
+}
+
+.slider-for-item {
+    outline: none;
+}
+
+.main-slide-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.slider-nav-container {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.slider-nav-item {
+    padding: 0 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.thumbnail-wrapper {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    transition: border-color 0.2s ease;
+}
+
+.thumbnail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slick-current .thumbnail-wrapper {
+    border-color: #FFFFFF;
+}
+
+.slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+    background-color: #FF342B;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background-color: #e62e26;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: white;
+    font-size: 24px;
+    opacity: 1;
+    font-family: 'slick';
+}
+
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -50px;
+}
+
+@media (max-width: 992px) {
+    .slider-for-container,
+    .slider-nav-container {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-section {
+        padding: 60px 0;
+    }
+
+    .gallery-outer-container {
+        width: 100%;
+        gap: 30px;
+    }
+
+    .slider-for-container,
+    .slider-nav-container {
+        width: 91%;
+    }
+
+    .gallery-outer-container h2 {
+        font-size: 36px;
+    }
+
+    .slick-prev {
+        left: -30px;
+    }
+
+    .slick-next {
+        right: -30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-section {
+        padding: 40px 0;
+    }
+
+    .gallery-outer-container h2 {
+        font-size: 28px;
+    }
+
+    .slick-prev, .slick-next {
+        width: 30px;
+        height: 30px;
+    }
+
+    .slick-prev:before, .slick-next:before {
+        font-size: 18px;
+    }
+
+    .slick-prev {
+        left: -20px;
+    }
+
+    .slick-next {
+        right: -20px;
+    }
+}

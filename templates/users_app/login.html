@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Вход{% endblock %}
+
+{% block nav %}
+<div class="d-flex align-items-center gap-2 left-group">
+    <a class="navbar-brand p-0 m-0" href="{% url 'web:main_page' %}">
+        <img src="{% static 'image/logos/nasa-logo-77x64.png' %}"
+             alt="Главная страница"
+             class="navbar-logo logo-desktop">
+        <img src="{% static 'image/logos/nasa-logo-57x48.png' %}"
+             alt="Главная страница"
+             class="navbar-logo logo-mobile">
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center text-white">
+    <h1 class="display-4">Вход</h1>
+</div>
+<div class="row text-center mt-5">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data" class="form-floating">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Войти</button>
+                <a class="btn btn-lg btn-block btn-outline-primary" href="javascript:history.back()">Назад</a>
+                <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'users:reg' %}">Регистрация</a>
+            </form>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+{% endblock %}
